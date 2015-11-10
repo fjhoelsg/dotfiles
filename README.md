@@ -24,4 +24,4 @@ them with a dot.
 
 - Running the bootstrap script will override your dotfiles
 - The OS X settigns script might require a restart for changes to be applied
-- The setting for git do **NOT** include user and email
+- The settings for git do **NOT** include user and email
