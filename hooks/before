@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+SCRIPTS_PATH=$(dirname "${BASH_SOURCE}")/scripts
+
+# Require admin permissions
+sudo -v
+
+# Update sudo time until script finishes
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+# Scripts
+source $SCRIPTS_PATH/osx
+source $SCRIPTS_PATH/brew
+sudo chsh -s $(which zsh) $(whoami)
+/usr/bin/env zsh $SCRIPTS_PATH/zprezto

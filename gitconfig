@@ -1,0 +1,18 @@
+[color]
+  ui = auto
+[core]
+  attributesfile = ~/.gitattributes
+  autocrlf = input
+  editor = vim
+  excludesfile = ~/.gitignore
+  precomposeunicode = false
+  trustctime = false
+  whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+[fetch]
+  prune = true
+[help]
+  autocorrect = 1
+[push]
+  default = current
+[rebase]
+  autosquash = true

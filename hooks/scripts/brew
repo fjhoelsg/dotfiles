@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+# Install brew if not installed
+if ! $(command -v brew >/dev/null 2>&1 || { exit 1; }); then
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+# Make sure we’re using the latest Homebrew
+brew update
+
+# Upgrade formulas
+brew upgrade --all
+
+# Install a better shell
+brew install zsh
+ZSH_PATH=$(which zsh)
+if ! grep -q -x -F -e "${ZSH_PATH}" < /etc/shells; then
+  echo "${ZSH_PATH}" |  sudo tee -a /etc/shells > /dev/null
+fi
+
+# Add formulae
+brew tap 'homebrew/dupes'
+brew tap 'thoughtbot/formulae'
+brew tap 'neovim/neovim'
+
+# Install core utils
+brew install coreutils
+brew install findutils
+brew install moreutils
+brew install openssl
+
+# Update built-in tools
+brew install ack
+brew install git
+brew install gnu-sed --default-names
+brew install homebrew/dupes/grep
+brew install homebrew/dupes/openssh
+brew install homebrew/dupes/screen
+brew install neovim --HEAD
+brew install node
+brew install p7zip
+brew install rename
+brew install ssh-copy-id
+brew install tree
+brew install vim --override-system-vi
+brew install tmux
+
+# Create neovim links
+rm -f ~/.nvimrc
+ln -s ~/.vimrc ~/.nvimrc
+rm -f ~/.nvim
+ln -s ~/.vim ~/.nvim
+
+# Remove outdated versions
+brew cleanup
