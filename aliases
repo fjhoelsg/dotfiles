@@ -1,6 +1,5 @@
 # Aliases
 alias flushcache='dscacheutil -flushcache'
 alias serve_files='python3 -m http.server'
-alias vim='nvim'
 unalias ls
 alias ls='ls -G'
