@@ -10,10 +10,10 @@ the parts that you like.
 ## Components
 
 - OS X settings
-- zsh with [Prezto](https://github.com/sorin-ionescu/prezto)
-- brew with core utilities
-- vim with [vim-plug](https://github.com/junegunn/vim-plug) plugins
-- tmux
+- Zsh with [Prezto](https://github.com/sorin-ionescu/prezto)
+- [Homebrew](http://brew.sh/)
+- Vim with [vim-plug](https://github.com/junegunn/vim-plug)
+- Tmux
 - [Docker](https://www.docker.com/) with [Compose](https://docs.docker.com/compose/)
 - [Go](https://golang.org/)
 
