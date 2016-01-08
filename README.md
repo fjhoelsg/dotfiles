@@ -13,7 +13,7 @@ the parts that you like.
 - zsh with [Prezto](https://github.com/sorin-ionescu/prezto)
 - brew with core utilities
 - vim with [vim-plug](https://github.com/junegunn/vim-plug) plugins
-- [neovim](https://github.com/neovim/neovim)
+- tmux
 
 All of the scripts are located inside `hooks/scripts` and they can be run
 independent from one another. The dotfiles are located in the project root and
@@ -24,4 +24,3 @@ them with a dot.
 
 - Running the bootstrap script will override your dotfiles
 - The OS X settigns script might require a restart for changes to be applied
-- The settings for git do **NOT** include user and email
