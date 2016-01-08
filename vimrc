@@ -2,20 +2,13 @@
 " General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-filetype off
+filetype on                           " Enable file type
+filetype plugin on                    " Enable file type plugin
+filetype indent on                    " Use file specific indent
 set autoread                          " Read file when changed
 set history=1000                      " Max history lines
 set nocompatible                      " Use improved
-set updatetime=2000
-
-filetype on                           " Disable file type
-filetype plugin on                    " Enable file type plugin
-filetype indent on                    " Use file specific indent
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" User Interface
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+set updatetime=1000
 set cursorline                        " Highlight current line
 set backspace=indent,eol,start        " Backspace behavior
 set hidden                            " Allow background buffers
@@ -32,6 +25,7 @@ set showmatch                         " Highlight matching braces
 set showmode                          " Show current mode
 set ttyfast                           " Fast terminal
 set wildmenu                          " Use visual autocomplete
+set timeoutlen=1000 ttimeoutlen=0     " Remove Esc key deley
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Errors
@@ -73,6 +67,9 @@ set t_Co=256                          " Use 256 colors
 set background=dark                   " Dark background
 colorscheme seti                      " Color scheme
 syntax on                             " Syntax processing
+" Remove terminal background
+autocmd VimEnter * highlight Normal ctermbg=none
+autocmd VimEnter * highlight NonText ctermbg=none
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Indentation
@@ -100,10 +97,6 @@ set wrapscan                          " Wrap around
 " Key bindings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let mapleader = ","                   " Set new leader"
-let g:mapleader = ","                 " Set new leader"
-nmap <leader>w :w!<cr>                " Fast saving
-
 " Disable arrow keys in Command mode
 nnoremap <Left> <NOP>
 nnoremap <Right> <NOP>
@@ -116,6 +109,10 @@ inoremap <Right> <NOP>
 inoremap <Up> <NOP>
 inoremap <Down> <NOP>
 
+" Diable backspace and delete keys in Insert mode
+inoremap <BS> <Nop>
+inoremap <Del> <Nop>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Load files
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -124,3 +121,33 @@ inoremap <Down> <NOP>
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim Airline
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline_theme='badwolf'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Neocomplete
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim Go
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_command = "goimports"
+let g:go_fmt_autosave = 1
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
