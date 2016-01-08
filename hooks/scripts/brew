@@ -23,7 +23,6 @@ fi
 # Add formulae
 brew tap 'homebrew/dupes'
 brew tap 'thoughtbot/formulae'
-brew tap 'neovim/neovim'
 
 # Install core utils
 brew install coreutils
