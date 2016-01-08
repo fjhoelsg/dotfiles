@@ -2,16 +2,18 @@
 
 # Install brew if not installed
 if ! $(command -v brew >/dev/null 2>&1 || { exit 1; }); then
+  echo 'Installing brew...'
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-# Make sure we’re using the latest Homebrew
+# Update brew
+echo 'Updating brew...'
 brew update
 
 # Upgrade formulas
 brew upgrade --all
 
-# Install a better shell
+# Install zsh
 brew install zsh
 ZSH_PATH=$(which zsh)
 if ! grep -q -x -F -e "${ZSH_PATH}" < /etc/shells; then
@@ -36,14 +38,20 @@ brew install gnu-sed --default-names
 brew install homebrew/dupes/grep
 brew install homebrew/dupes/openssh
 brew install homebrew/dupes/screen
-brew install node
-brew install p7zip
 brew install rename
 brew install ssh-copy-id
-brew install tree
-brew install vim --override-system-vi
 brew install tmux
+brew install tree
+brew install vim --override-system-vi --with-lua --with-python
 
+# Install additional packages
+brew install docker
+brew install boot2docker
+brew install htop-osx
+brew install node
+brew install p7zip
+brew install python
+brew install python3
 
 # Remove outdated versions
 brew cleanup
