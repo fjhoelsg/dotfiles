@@ -17,11 +17,6 @@ the parts that you like.
 - [Docker](https://www.docker.com/) with [Compose](https://docs.docker.com/compose/)
 - [Go](https://golang.org/)
 
-All of the scripts are located inside `hooks/scripts` and they can be run
-independent from one another. The dotfiles are located in the project root and
-should work by simply copying the files to your home directory and prepending
-them with a dot.
-
 ## Important Notes
 
 - Running the bootstrap script will override your dotfiles
