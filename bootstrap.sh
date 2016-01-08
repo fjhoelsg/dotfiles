@@ -44,9 +44,5 @@ sed -i.bak "s|\[GOPATH\]|$GOPATH|g" ~/.zshenv
 # Reload configurations
 source ~/.zshenv
 
-# Install Go tools
-echo 'Installing Go tools...'
-go get golang.org/x/tools/cmd/goimports
-
 # Post scripts
 source "${HOOKS_PATH}/after"
