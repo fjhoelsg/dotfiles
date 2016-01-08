@@ -24,7 +24,7 @@ if [ -z "${GOPATH}" ]; then
   read -p 'GOPATH: ' GOPATH 
 fi
 GOPATH=$(echo "${GOPATH}" | sed -e "s@${HOME}@~@g")
-GOPATH=$(echo "${GOPATH}" | sed -e "s/ /\\\ /g")  
+GOPATH=$(echo "${GOPATH}" | sed -e "s/ /\\\ /g")
 sh -c "mkdir -p ${GOPATH}"
 
 # Pre scripts
@@ -40,6 +40,13 @@ done
 sed -i.bak "s|\[GIT_USER_NAME\]|$GIT_USER_NAME|g" ~/.gitconfig
 sed -i.bak "s|\[GIT_USER_EMAIL\]|$GIT_USER_EMAIL|g" ~/.gitconfig
 sed -i.bak "s|\[GOPATH\]|$GOPATH|g" ~/.zshenv
+
+# Reload configurations
+source ~/.zshenv
+
+# Install Go tools
+echo 'Installing Go tools...'
+go get golang.org/x/tools/cmd/goimports
 
 # Post scripts
 source "${HOOKS_PATH}/after"
