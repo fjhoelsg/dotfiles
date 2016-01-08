@@ -36,11 +36,7 @@ brew install git
 brew install gnu-sed --default-names
 brew install homebrew/dupes/grep
 brew install homebrew/dupes/openssh
-brew install homebrew/dupes/screen
-brew install rename
-brew install ssh-copy-id
-brew install tmux
-brew install tree
+brew install python
 brew install vim --override-system-vi --with-lua --with-python
 
 # Install additional packages
@@ -49,8 +45,11 @@ brew install boot2docker
 brew install htop-osx
 brew install node
 brew install p7zip
-brew install python
 brew install python3
+brew install rename
+brew install ssh-copy-id
+brew install tmux
+brew install tree
 
 # Remove outdated versions
 brew cleanup
