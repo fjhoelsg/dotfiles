@@ -41,6 +41,7 @@ brew install vim --override-system-vi --with-lua --with-python
 
 # Install additional packages
 brew install docker
+brew install docker-compose
 brew install boot2docker
 brew install htop-osx
 brew install node

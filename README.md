@@ -14,6 +14,7 @@ the parts that you like.
 - brew with core utilities
 - vim with [vim-plug](https://github.com/junegunn/vim-plug) plugins
 - tmux
+- [Docker](https://www.docker.com/) with [Compose](https://docs.docker.com/compose/)
 - [Go](https://golang.org/)
 
 All of the scripts are located inside `hooks/scripts` and they can be run
