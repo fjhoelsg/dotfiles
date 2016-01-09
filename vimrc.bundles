@@ -21,5 +21,6 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'trusktr/seti.vim'
 Plug 'Shougo/neocomplete.vim'
 Plug 'fatih/vim-go'
+Plug 'Raimondi/delimitMate'
 
 call plug#end()
