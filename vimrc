@@ -82,6 +82,9 @@ set smarttab                          " Smart tabs
 set softtabstop=2                     " Number of spaces per TAB when editing
 set tabstop=2                         " Spaces used to display TAB
 
+" Length for git commits
+autocmd Filetype gitcommit setlocal spell textwidth=72
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
