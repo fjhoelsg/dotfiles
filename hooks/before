@@ -13,3 +13,5 @@ source $SCRIPTS_PATH/osx
 source $SCRIPTS_PATH/brew
 sudo chsh -s $(which zsh) $(whoami)
 /usr/bin/env zsh $SCRIPTS_PATH/zprezto
+source $SCRIPTS_PATH/ssh
+
