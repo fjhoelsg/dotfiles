@@ -34,6 +34,7 @@ brew install openssl
 brew install ack
 brew install git
 brew install gnu-sed --default-names
+brew install gnu-tar --default-names
 brew install homebrew/dupes/grep
 brew install homebrew/dupes/openssh
 brew install python
@@ -43,6 +44,7 @@ brew install vim --override-system-vi --with-lua --with-python
 brew install docker
 brew install docker-machine
 brew install docker-compose
+brew install go
 brew install htop-osx
 brew install node
 brew install p7zip
