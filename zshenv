@@ -1,7 +1,3 @@
-# Functions
-dsremove () {
-  find "${1:-.}" -name '*.DS_Store' -type f -delete
-}
 
 # General Exports
 export EDITOR=vim

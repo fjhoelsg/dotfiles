@@ -6,3 +6,17 @@ alias ls='ls -G'
 if [ "$(which ssh-add)" != '/usr/bin/ssh-add' ]; then
   alias ssh-add=/usr/bin/ssh-add
 fi
+
+# Functions
+docker-clean() {
+  if [ -z "$1" ]; then
+    exp="^<none>"
+  else
+    exp="$1"
+  fi
+  docker rmi $(docker images | grep "$exp" | awk '{ print $3; }')
+}
+
+dsremove() {
+  find "${1:-.}" -name '*.DS_Store' -type f -delete
+}
