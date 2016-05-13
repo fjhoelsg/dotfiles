@@ -4,16 +4,13 @@ zstyle ':prezto:*:*' color 'yes'
 # Vi key bindings
 zstyle ':prezto:module:editor' key-bindings 'vi'
 
-# Auto convert dots in file path (.... to ../..)
-zstyle ':prezto:module:editor' dot-expansion 'yes'
-
 # Prompt theme
 zstyle ':prezto:module:prompt' theme 'minimal'
 
 # Load SSH identities into agent
 zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'github'
 
-# Automatically tart a tmux session when zsh is launched locally
+# Automatically start a tmux session when zsh is launched locally
 zstyle ':prezto:module:tmux:auto-start' local 'yes'
 
 # Modules
