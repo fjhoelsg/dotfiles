@@ -52,7 +52,7 @@ brew install python3
 brew install reattach-to-user-namespace
 brew install rename
 brew install ssh-copy-id
-brew install tmux
+brew install tmux --HEAD
 brew install tree
 brew install watch
 
