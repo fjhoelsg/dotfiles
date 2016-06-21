@@ -14,7 +14,6 @@ the parts that you like.
 - [Homebrew](http://brew.sh/)
 - Vim with [vim-plug](https://github.com/junegunn/vim-plug)
 - Tmux
-- [Docker](https://www.docker.com/) with [Compose](https://docs.docker.com/compose/)
 - [Go](https://golang.org/)
 
 ## Important Notes
