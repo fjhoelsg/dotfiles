@@ -21,11 +21,9 @@ fi
 
 # Get GOPATH
 if [ -z "${GOPATH}" ]; then
-  read -p 'GOPATH: ' GOPATH 
+  read -p 'GOPATH: ' GOPATH
 fi
-GOPATH=$(echo "${GOPATH}" | sed -e "s@${HOME}@~@g")
-GOPATH=$(echo "${GOPATH}" | sed -e "s/ /\\\ /g")
-sh -c "mkdir -p ${GOPATH}"
+mkdir -p "${GOPATH}"
 
 # Pre scripts
 source "${HOOKS_PATH}/before"
