@@ -3,8 +3,6 @@
   email = [GIT_USER_EMAIL]
 [color]
   ui = auto
-[commit]
-  template = ~/.gitmessage
 [core]
   attributesfile = ~/.gitattributes
   autocrlf = input
