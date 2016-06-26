@@ -32,6 +32,9 @@ do
   cp "${file}" ~/.$(basename "${file}")
 done
 
+# Add hushlogin
+touch ~/.hushlogin
+
 # Substitute variables in files
 sed -i.bak "s|\[GIT_USER_NAME\]|$git_name|g" ~/.gitconfig
 sed -i.bak "s|\[GIT_USER_EMAIL\]|$git_email|g" ~/.gitconfig
