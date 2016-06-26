@@ -1,3 +1,6 @@
+# Load colorschem
+source ~/.colors/base16/base16-eighties.dark.sh
+
 # Load Zprezto
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
