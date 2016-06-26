@@ -1,21 +1,20 @@
 #!/usr/bin/env bash
 
 # Paths
-ROOT_DIR=$(dirname "${BASH_SOURCE}")
-HOOKS_PATH=$ROOT_DIR/hooks
-FILES=$(find "${ROOT_DIR}" -type f -not -path '*/\.*' \
+root_dir=$(dirname "${BASH_SOURCE}")
+dotfiles=$(find "${root_dir}" -type f -not -path '*/\.*' \
   -not -name "$(basename "${BASH_SOURCE}")" -not -name README.md -maxdepth 1)
 
 # Get git user name
-GIT_USER_NAME=$(git config --global --get user.name)
-if [ -z "${GIT_USER_NAME}" ]; then
-  read -p 'Git name: ' GIT_USER_NAME
+git_name=$(git config --global --get user.name)
+if [ -z "${git_name}" ]; then
+  read -p 'Git name: ' git_name
 fi
 
 # Get git user email
-GIT_USER_EMAIL=$(git config --global --get user.email)
-if [ -z "${GIT_USER_EMAIL}" ]; then
-  read -p 'Git email: ' GIT_USER_EMAIL
+git_email=$(git config --global --get user.email)
+if [ -z "${git_email}" ]; then
+  read -p 'Git email: ' git_email
 fi
 
 # Get GOPATH
@@ -25,17 +24,17 @@ fi
 mkdir -p "${GOPATH}"
 
 # Execute scripts that can be run before copying the dotfiles
-source "${HOOKS_PATH}/before"
+source "$root_dir/hooks/before"
 
 # Copy dotfiles
-for file in $FILES
+for file in $dotfiles
 do
   cp "${file}" ~/.$(basename "${file}")
 done
 
 # Substitute variables in files
-sed -i.bak "s|\[GIT_USER_NAME\]|$GIT_USER_NAME|g" ~/.gitconfig
-sed -i.bak "s|\[GIT_USER_EMAIL\]|$GIT_USER_EMAIL|g" ~/.gitconfig
+sed -i.bak "s|\[GIT_USER_NAME\]|$git_name|g" ~/.gitconfig
+sed -i.bak "s|\[GIT_USER_EMAIL\]|$git_email|g" ~/.gitconfig
 rm -f ~/.gitconfig.bak
 sed -i.bak "s|\[GOPATH\]|$GOPATH|g" ~/.zshenv
 rm -f ~/.zshenv/bak
@@ -44,4 +43,4 @@ rm -f ~/.zshenv/bak
 source ~/.zshenv
 
 # Execute scripts that MUST be run after the dotfiles have been copied
-source "${HOOKS_PATH}/after"
+source "$root_dir/hooks/after"
