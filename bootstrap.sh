@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 
 # Paths
-FILENAME=$(basename "${BASH_SOURCE}")
 ROOT_DIR=$(dirname "${BASH_SOURCE}")
 HOOKS_PATH=$ROOT_DIR/hooks
-FILES=$(find "${ROOT_DIR}" -type f -not -path '*/\.*' -not -name "${FILENAME}" \
-  -not -name README.md -maxdepth 1)
+FILES=$(find "${ROOT_DIR}" -type f -not -path '*/\.*' \
+  -not -name "$(basename "${BASH_SOURCE}")" -not -name README.md -maxdepth 1)
 
 # Get git user name
 GIT_USER_NAME=$(git config --global --get user.name)
