@@ -37,7 +37,9 @@ done
 # Substitute variables in files
 sed -i.bak "s|\[GIT_USER_NAME\]|$GIT_USER_NAME|g" ~/.gitconfig
 sed -i.bak "s|\[GIT_USER_EMAIL\]|$GIT_USER_EMAIL|g" ~/.gitconfig
+rm -f ~/.gitconfig.bak
 sed -i.bak "s|\[GOPATH\]|$GOPATH|g" ~/.zshenv
+rm -f ~/.zshenv/bak
 
 # Reload configurations
 source ~/.zshenv
