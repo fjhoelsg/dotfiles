@@ -24,7 +24,7 @@ if [ -z "${GOPATH}" ]; then
 fi
 mkdir -p "${GOPATH}"
 
-# Pre scripts
+# Execute scripts that can be run before copying the dotfiles
 source "${HOOKS_PATH}/before"
 
 # Copy dotfiles
@@ -43,5 +43,5 @@ rm -f ~/.zshenv/bak
 # Reload configurations
 source ~/.zshenv
 
-# Post scripts
+# Execute scripts that MUST be run after the dotfiles have been copied
 source "${HOOKS_PATH}/after"
