@@ -23,5 +23,6 @@ Plug 'trusktr/seti.vim'
 Plug 'Shougo/neocomplete.vim'
 Plug 'fatih/vim-go'
 Plug 'Raimondi/delimitMate'
+Plug 'scrooloose/nerdTree'
 
 call plug#end()
