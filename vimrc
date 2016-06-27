@@ -63,9 +63,10 @@ if !isdirectory(glob("~/.vim/colors"))
   :silent execute '!rm -rf ~/.vim/tmp-colors'
 endif
 
+" Set colorscheme
 set t_Co=256                          " Use 256 colors
 set background=dark                   " Dark background
-colorscheme seti                      " Color scheme
+colorscheme Tomorrow-Night-Eighties   " Color scheme
 syntax on                             " Syntax processing
 
 " Remove terminal background
