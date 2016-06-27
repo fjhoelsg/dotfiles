@@ -1,26 +1,7 @@
 #!/usr/bin/env bash
 
-font_urls=(
-  'https://github.com/google/fonts/raw/master/apache/robotomono/RobotoMono-Regular.ttf'
-  'https://github.com/google/fonts/raw/master/apache/robotomono/RobotoMono-Italic.ttf'
-  'https://github.com/google/fonts/raw/master/apache/robotomono/RobotoMono-Bold.ttf'
-  'https://github.com/google/fonts/raw/master/apache/robotomono/RobotoMono-BoldItalic.ttf'
-  'https://github.com/google/fonts/raw/master/apache/robotomono/RobotoMono-Medium.ttf'
-  'https://github.com/google/fonts/raw/master/apache/robotomono/RobotoMono-MediumItalic.ttf'
-  'https://github.com/google/fonts/raw/master/apache/robotomono/RobotoMono-Thin.ttf'
-  'https://github.com/google/fonts/raw/master/apache/robotomono/RobotoMono-ThinItalic.ttf'
-  'https://github.com/google/fonts/raw/master/apache/robotomono/RobotoMono-Light.ttf'
-  'https://github.com/google/fonts/raw/master/apache/robotomono/RobotoMono-LightItalic.ttf'
-)
-
-# Download fonts
-echo 'Installing fonts...'
-cd ~/Library/Fonts
-for url in "${font_urls[@]}"; do
-  file=$(echo ${url##*/})
-  if [ ! -f $file ]; then
-    echo "Downloading ${file}..."
-    curl -fsSLO $url
-  fi
-done
-cd - >/dev/null
+# Download and install powerline fonts
+curl -fsSLO https://github.com/powerline/fonts/archive/master.zip
+unzip master.zip
+rm -f master.zip
+./fonts-master/install.sh
