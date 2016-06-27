@@ -7,6 +7,9 @@ if [ -d "${GOPATH}" ]; then
   export PATH=$PATH:$GOPATH/bin
 fi
 
+# Java
+export JAVA_HOME="$(/usr/libexec/java_home)"
+
 # General Exports
 export EDITOR=vim
 export VISUAL=$EDITOR
