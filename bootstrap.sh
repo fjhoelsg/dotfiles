@@ -40,7 +40,7 @@ sed -i.bak "s|\[GIT_USER_NAME\]|$git_name|g" ~/.gitconfig
 sed -i.bak "s|\[GIT_USER_EMAIL\]|$git_email|g" ~/.gitconfig
 rm -f ~/.gitconfig.bak
 sed -i.bak "s|\[GOPATH\]|$GOPATH|g" ~/.zshenv
-rm -f ~/.zshenv/bak
+rm -f ~/.zshenv.bak
 
 # Reload configurations
 source ~/.zshenv
