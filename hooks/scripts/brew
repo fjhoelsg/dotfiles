@@ -48,6 +48,8 @@ brew install p7zip
 brew install python3
 brew install reattach-to-user-namespace
 brew install rename
+brew install screenfetch
+brew install ssh-copy-id
 brew install ssh-copy-id
 brew install tmux --HEAD
 brew install tree
