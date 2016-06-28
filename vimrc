@@ -8,7 +8,7 @@ filetype indent on                    " Use file specific indent
 set autoread                          " Read file when changed
 set history=1000                      " Max history lines
 set nocompatible                      " Use improved
-set updatetime=1000                   " Set to 1000 to avoid plugin glitches
+set updatetime=750                    " Set to 1000 to avoid plugin glitches
 set cursorline                        " Highlight current line
 set backspace=indent,eol,start        " Backspace behavior
 set hidden                            " Allow background buffers
