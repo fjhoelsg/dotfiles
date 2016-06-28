@@ -26,6 +26,7 @@ set showmode                          " Show current mode
 set ttyfast                           " Fast terminal
 set wildmenu                          " Use visual autocomplete
 set timeoutlen=1000 ttimeoutlen=0     " Remove Esc key deley
+autocmd BufWritePre * :%s/\s\+$//e    " Remove trailing spaces on write
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Errors
