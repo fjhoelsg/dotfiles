@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
-# Paths
-root_dir=$(dirname "${BASH_SOURCE}")
-dotfiles=$(find "${root_dir}" -type f -not -path '*/\.*' \
-  -not -name "$(basename "${BASH_SOURCE}")" -not -name README.md -maxdepth 1)
+readonly DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+#readonly DOTFILES=$(find "${DIR}" -type f -path "${DIR}/\.*" -maxdepth 1)
+readonly DOTFILES=$(find "${DIR}" -type f -name "\.*" -not -name .DS_Store -maxdepth 1)
+echo $DOTFILES
+exit 1
+readonly SCRIPTS_DIR=$DIR/scripts
 
 # Get git user name
 git_name=$(git config --global --get user.name)
@@ -23,27 +25,38 @@ if [ -z "${GOPATH}" ]; then
 fi
 mkdir -p "${GOPATH}"
 
-# Execute scripts that can be run before copying the dotfiles
-source "$root_dir/hooks/before"
-
-# Copy dotfiles
-for file in $dotfiles
-do
-  cp "${file}" ~/.$(basename "${file}")
+# Copy dotfiles to home directory
+for file in $DOTFILES; do
+  filename=$(basename "${file}")
+  cp "${file}" "${HOME}/${filename}"
 done
 
 # Add hushlogin
-touch ~/.hushlogin
+touch "${HOME}/.hushlogin"
 
 # Substitute variables in files
-sed -i.bak "s|\[GIT_USER_NAME\]|$git_name|g" ~/.gitconfig
-sed -i.bak "s|\[GIT_USER_EMAIL\]|$git_email|g" ~/.gitconfig
-rm -f ~/.gitconfig.bak
-sed -i.bak "s|\[GOPATH\]|$GOPATH|g" ~/.zshenv
-rm -f ~/.zshenv.bak
+sed -i.bak "s|\[GIT_USER_NAME\]|$git_name|g" "${HOME}/.gitconfig"
+sed -i.bak "s|\[GIT_USER_EMAIL\]|$git_email|g" "${HOME}/.gitconfig"
+rm -f "${HOME}/.gitconfig.bak"
+sed -i.bak "s|\[GOPATH\]|$GOPATH|g" "${HOME}/.zshenv"
+rm -f "${HOME}/.zshenv.bak"
+
+# Run scripts
+sudo "${SCRIPTS_DIR}/osx"
+source "${SCRIPTS_DIR}/brew"
+sudo chsh -s $(which zsh) $(whoami)
+/usr/bin/env zsh "${SCRIPTS_DIR}/zprezto"
+source "${SCRIPTS_DIR}/ssh"
+source "${SCRIPTS_DIR}/fonts"
+
+# Download base16 shell colors
+rm -rf ~/.colors
+git clone https://github.com/chriskempson/base16-shell.git ~/.colors/base16
 
 # Reload configurations
 source ~/.zshenv
 
-# Execute scripts that MUST be run after the dotfiles have been copied
-source "$root_dir/hooks/after"
+# Run scripts that have dependencies
+source "${SCRIPTS_DIR}/go-tools"
+source "${SCRIPTS_DIR}/vim"
+

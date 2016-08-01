@@ -13,6 +13,12 @@ zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'github'
 # Automatically start a tmux session when zsh is launched locally
 zstyle ':prezto:module:tmux:auto-start' local 'yes'
 
+# Automatically start a tmux session when zsh is launched in a SSH connection
+# zstyle ':prezto:module:tmux:auto-start' remote 'yes'
+
+# Enable iTerm integrations with tmux
+zstyle ':prezto:module:tmux:iterm' integrate 'yes'
+
 # Modules
 zstyle ':prezto:load' pmodule \
   'environment' \

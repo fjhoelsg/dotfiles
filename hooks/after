@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-SCRIPTS_PATH=$(dirname "${BASH_SOURCE}")/scripts
-
-# Scripts
-source $SCRIPTS_PATH/go-tools
-source $SCRIPTS_PATH/vim-plug
-source $SCRIPTS_PATH/fonts

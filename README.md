@@ -12,7 +12,7 @@ the parts that you like.
 - OS X settings
 - Zsh with [Prezto](https://github.com/sorin-ionescu/prezto)
 - [Homebrew](http://brew.sh/)
-- Vim with [vim-plug](https://github.com/junegunn/vim-plug)
+- Vim with [Dein](https://github.com/Shougo/dein.vim)
 - Tmux
 - [Go](https://golang.org/)
 

@@ -1,5 +1,5 @@
-# Load colorschem
-source ~/.colors/base16/base16-eighties.dark.sh
+# Load colorscheme
+source "$HOME/.colors/base16/scripts/base16-eighties.sh"
 
 # Load Zprezto
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
@@ -7,6 +7,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Load aliases
-if [[ -f ~/.aliases ]]; then
-  source ~/.aliases
+if [[ -f "${HOME}/.aliases" ]]; then
+  source "${HOME}/.aliases"
 fi

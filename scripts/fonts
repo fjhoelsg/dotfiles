@@ -5,3 +5,4 @@ curl -fsSLO https://github.com/powerline/fonts/archive/master.zip
 unzip master.zip
 rm -f master.zip
 ./fonts-master/install.sh
+rm -rf fonts-master
