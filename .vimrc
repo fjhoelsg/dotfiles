@@ -2,9 +2,7 @@
 " General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-filetype on                           " Enable file type
-filetype plugin on                    " Enable file type plugin
-filetype indent on                    " Use file specific indent
+filetype off                          " Enable file type
 set autoread                          " Read file when changed
 set history=1000                      " Max history lines
 set nocompatible                      " Use improved

@@ -1,3 +1,7 @@
+if &compatible
+  set nocompatible
+endif
+
 " Install dein if not available
 if empty(glob("~/.vim/dein/repos/github.com/Shougo/dein.vim"))
   execute '!git clone https://github.com/Shougo/dein.vim.git ~/.vim/dein/repos/github.com/Shougo/dein.vim'
@@ -24,3 +28,5 @@ call dein#add('Raimondi/delimitMate')
 call dein#add('scrooloose/nerdTree')
 
 call dein#end()
+
+filetype plugin indent on
