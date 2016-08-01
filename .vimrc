@@ -103,6 +103,12 @@ set wrapscan                          " Wrap around
 " Key bindings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Use ctrl to move between splits
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 " Disable arrow keys in Command mode
 nnoremap <Left> <NOP>
 nnoremap <Right> <NOP>
