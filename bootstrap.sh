@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 
 readonly DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-#readonly DOTFILES=$(find "${DIR}" -type f -path "${DIR}/\.*" -maxdepth 1)
 readonly DOTFILES=$(find "${DIR}" -type f -name "\.*" -not -name .DS_Store -maxdepth 1)
-echo $DOTFILES
-exit 1
 readonly SCRIPTS_DIR=$DIR/scripts
 
 # Get git user name
@@ -28,7 +25,7 @@ mkdir -p "${GOPATH}"
 # Copy dotfiles to home directory
 for file in $DOTFILES; do
   filename=$(basename "${file}")
-  cp "${file}" "${HOME}/${filename}"
+  cp -f "${file}" "${HOME}/${filename}"
 done
 
 # Add hushlogin
