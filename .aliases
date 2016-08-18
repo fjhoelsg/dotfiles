@@ -1,6 +1,7 @@
 # Aliases
 alias dnsflush='dscacheutil -flushcache'
 alias serve-files='python3 -m http.server'
+alias zip='zip -rX'
 unalias ls &>/dev/null
 alias ls='ls -G'
 if [ "$(which ssh-add)" != '/usr/bin/ssh-add' ]; then
