@@ -38,7 +38,7 @@ brew install gnu-tar --default-names
 brew install homebrew/dupes/grep
 brew install homebrew/dupes/openssh
 brew install python
-brew install vim --override-system-vi --with-lua --with-python
+brew install vim --with-override-system-vi --with-lua --with-python
 
 # Install additional packages
 brew install go
