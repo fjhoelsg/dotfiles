@@ -68,7 +68,7 @@ set t_Co=256                          " Use 256 colors
 set background=dark                   " Dark background
 highlight Normal ctermbg=none         " Remove terminal background for normal text
 highlight NonText ctermbg=none        " Remove terminal background for empty text
-colorscheme Tomorrow-Night-Eighties   " Color scheme
+colorscheme smyck
 syntax on                             " Syntax processing
 
 " Remove terminal background
