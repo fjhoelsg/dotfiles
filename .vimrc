@@ -75,9 +75,6 @@ syntax on                             " Syntax processing
 autocmd VimEnter * highlight Normal ctermbg=none
 autocmd VimEnter * highlight NonText ctermbg=none
 
-" Change background color after line 80
-let &colorcolumn=join(range(81,999),",")")
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Indentation
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
