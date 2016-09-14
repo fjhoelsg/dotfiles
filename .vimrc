@@ -2,6 +2,7 @@
 " General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+let mapleader=","                     " Change leader mapping
 filetype off                          " Enable file type
 set autoread                          " Read file when changed
 set history=1000                      " Max history lines
