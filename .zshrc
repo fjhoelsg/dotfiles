@@ -10,3 +10,6 @@ fi
 if [[ -f "${HOME}/.aliases" ]]; then
   source "${HOME}/.aliases"
 fi
+
+# Source env once more to override .zprofile
+source "$HOME/.zshenv"
