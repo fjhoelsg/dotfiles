@@ -1,8 +1,8 @@
 [alias]
+  st = status -s
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(blue)(%an <%ae>)%Creset' --abbrev-commit --date=relative
-[user]
-  name = [GIT_USER_NAME]
-  email = [GIT_USER_EMAIL]
+[apply]
+  whitespace = fix
 [color]
   ui = auto
 [core]
@@ -11,12 +11,22 @@
   editor = vim
   excludesfile = ~/.gitignore
   precomposeunicode = false
-  trustctime = false
+  trustctime = false 
+  whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+[diff]
+	renames = copies
+[diff "bin"]
+	textconv = hexdump -v -C
 [fetch]
   prune = true
 [help]
   autocorrect = 1
+[merge]
+	log = true
 [push]
   default = current
 [rebase]
   autosquash = true
+[user]
+  name = [GIT_USER_NAME]
+  email = [GIT_USER_EMAIL]
