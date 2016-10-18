@@ -37,10 +37,16 @@ rm -f "${HOME}/.zshenv.bak"
 # Run scripts
 source "${SCRIPTS_DIR}/macos"
 source "${SCRIPTS_DIR}/brew"
-sudo chsh -s $(which zsh) $(whoami)
-/usr/bin/env zsh "${SCRIPTS_DIR}/zprezto"
 source "${SCRIPTS_DIR}/ssh"
 source "${SCRIPTS_DIR}/fonts"
+
+# Change shell to zsh
+zsh_path=$(which zsh)
+if ! grep -q "^${zsh_path}" /etc/shells; then
+  echo "${zsh_path}" | sudo tee -a /etc/shells;
+  chsh -s "${zsh_path}";
+fi;
+/usr/bin/env zsh "${SCRIPTS_DIR}/zprezto"
 
 # Download base16 shell colors
 rm -rf ~/.colors
