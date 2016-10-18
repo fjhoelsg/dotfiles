@@ -11,7 +11,7 @@ echo 'Updating brew...'
 brew update
 
 # Upgrade formulas
-brew upgrade --all
+brew upgrade
 
 # Install zsh
 brew install zsh
@@ -23,6 +23,7 @@ fi
 # Add formulae
 brew tap 'homebrew/dupes'
 brew tap 'thoughtbot/formulae'
+brew tap homebrew/versions
 
 # Install core utils
 brew install coreutils
@@ -43,6 +44,7 @@ brew install vim --with-override-system-vi --with-lua --with-python
 # Install additional packages
 brew install go
 brew install htop-osx
+brew install nmap
 brew install node
 brew install p7zip
 brew install python3
