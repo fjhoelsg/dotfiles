@@ -1,6 +1,8 @@
 # dotfiles
 
 Compilation of my favorite dotfiles from various sources throughout GitHub.
+Most of the files are taken from
+[Mathias’s dotfiles](https://github.com/mathiasbynens/dotfiles).
 
 ## Installation
 

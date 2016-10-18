@@ -39,7 +39,7 @@ sed -i.bak "s|\[GOPATH\]|$GOPATH|g" "${HOME}/.zshenv"
 rm -f "${HOME}/.zshenv.bak"
 
 # Run scripts
-sudo "${SCRIPTS_DIR}/osx"
+source "${SCRIPTS_DIR}/macos"
 source "${SCRIPTS_DIR}/brew"
 sudo chsh -s $(which zsh) $(whoami)
 /usr/bin/env zsh "${SCRIPTS_DIR}/zprezto"
