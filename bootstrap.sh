@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-
 readonly DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-readonly DOTFILES=$(find "${DIR}" -type f -name "\.*" -not -name .DS_Store -maxdepth 1)
 readonly SCRIPTS_DIR=$DIR/scripts
 
 # Get git user name
@@ -23,10 +21,8 @@ fi
 mkdir -p "${GOPATH}"
 
 # Copy dotfiles to home directory
-for file in $DOTFILES; do
-  filename=$(basename "${file}")
-  cp -f "${file}" "${HOME}/${filename}"
-done
+find "${DIR}" -type f -name "\.*" -not -name .DS_Store -maxdepth 1 -mindepth 1 \
+  -exec sh -c "cp -f '{}' \"\${HOME}/\$(basename {})\""  \;
 
 # Add hushlogin
 touch "${HOME}/.hushlogin"
@@ -56,4 +52,3 @@ source ~/.zshenv
 # Run scripts that have dependencies
 source "${SCRIPTS_DIR}/go-tools"
 source "${SCRIPTS_DIR}/vim"
-
