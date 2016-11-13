@@ -123,10 +123,6 @@ inoremap <Right> <NOP>
 inoremap <Up> <NOP>
 inoremap <Down> <NOP>
 
-" Diable backspace and delete keys in Insert mode
-inoremap <BS> <Nop>
-inoremap <Del> <Nop>
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Load files
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
