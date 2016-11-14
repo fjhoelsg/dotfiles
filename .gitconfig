@@ -11,18 +11,18 @@
   editor = vim
   excludesfile = ~/.gitignore
   precomposeunicode = false
-  trustctime = false 
+  trustctime = false
   whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 [diff]
-	renames = copies
+  renames = copies
 [diff "bin"]
-	textconv = hexdump -v -C
+  textconv = hexdump -v -C
 [fetch]
   prune = true
 [help]
   autocorrect = 1
 [merge]
-	log = true
+  log = true
 [push]
   default = current
 [rebase]
