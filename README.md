@@ -11,7 +11,7 @@ the parts that you like.
 
 ## Components
 
-- OS X settings
+- macOS settings
 - Zsh with [Prezto](https://github.com/sorin-ionescu/prezto)
 - [Homebrew](http://brew.sh/)
 - Vim with [Dein](https://github.com/Shougo/dein.vim)
@@ -21,4 +21,4 @@ the parts that you like.
 ## Important Notes
 
 - Running the bootstrap script will override your dotfiles
-- The OS X settigns script might require a restart for changes to be applied
+- The macOS settigns script might require a restart for changes to be applied
