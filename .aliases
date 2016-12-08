@@ -9,6 +9,10 @@ if [ "$(which ssh-add)" != '/usr/bin/ssh-add' ]; then
 fi
 
 # Functions
+zip-dir() {
+  zip -rX $1 ${@:2} -x "**/.DS_Store"
+}
+
 docker-clean() {
   if [ -z "$1" ]; then
     exp="^<none>"
