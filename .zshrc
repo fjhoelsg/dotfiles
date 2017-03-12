@@ -13,3 +13,7 @@ fi
 
 # Source env once more to override .zprofile
 source "$HOME/.zshenv"
+
+if [[ $- == *i* && -z "$TMUX" ]] && which tmux >/dev/null 2>&1; then
+  exec tmux
+fi
