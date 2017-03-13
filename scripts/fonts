@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
-# Download and install powerline fonts
-curl -fsSLO https://github.com/powerline/fonts/archive/master.zip
-unzip master.zip
-rm -f master.zip
-./fonts-master/install.sh
-rm -rf fonts-master
+# Download patched fonts
+tmpDir=$(mktemp -d)
+startDir=$(pwd)
+cd $tmpDir
+git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git
+cd nerd-fonts
+./install.sh
+cd $startDir
+rm -rf $tmpDir
