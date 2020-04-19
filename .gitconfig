@@ -1,39 +1,54 @@
 [alias]
-  st = status -s
-  lg = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(blue)(%an <%ae>)%Creset' --abbrev-commit --date=relative
-  tags = tag -l
-  branches = branch -a
-  remotes = remote -v
+	st = status -s
+	lg = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(blue)(%an <%ae>)%Creset' --abbrev-commit --date=relative
+  ls = ls-files
+	tags = tag -l
+	branches = branch -a
+	remotes = remote -v
+	contributors = shortlog --summary --numbered
 [apply]
-  whitespace = fix
+	whitespace = fix
+[branch]
+	autosetuprebase = always
+[checkout]
+	defaultRemote = origin
 [color]
-  ui = auto
+	ui = auto
 [commit]
-  gpgsign = true
+	gpgsign = false
 [core]
-  attributesfile = ~/.gitattributes
-  autocrlf = input
-  editor = vim
-  excludesfile = ~/.gitignore
-  precomposeunicode = false
-  trustctime = false
-  whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+	attributesfile = ~/.gitattributes
+	autocrlf = input
+	editor = nvim
+	excludesfile = ~/.gitignore
+	pager = less -F
+	precomposeunicode = false
+	trustctime = false
+  untrackedCache = true
+	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 [diff]
-  renames = copies
+	colorMoved = zebra
+	compactionHeuristic = true
+	renames = copies
 [diff "bin"]
-  textconv = hexdump -v -C
+	textconv = hexdump -v -C
 [fetch]
-  prune = true
+	prune = true
 [help]
-  autocorrect = 1
+	autocorrect = 1
 [merge]
-  log = true
+	log = true
+[pager]
+  branch = false
 [push]
-  default = current
+	default = simple
+	followTags = true
 [pull]
-  rebase = true
+	rebase = true
 [rebase]
-  autosquash = true
+	autosquash = true
 [user]
-  name = [GIT_USER_NAME]
-  email = [GIT_USER_EMAIL]
+	email = fjhoelsg@users.noreply.github.com
+	name = Jhoel Salas
+[worktree]
+	guessRemote = true

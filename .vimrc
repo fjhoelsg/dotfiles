@@ -1,5 +1,5 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" General
+" General                                                                      "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let mapleader=","                     " Change leader mapping
@@ -7,7 +7,7 @@ filetype off                          " Enable file type
 set autoread                          " Read file when changed
 set history=1000                      " Max history lines
 set nocompatible                      " Use improved
-set updatetime=750                    " Set to 1000 to avoid plugin glitches
+set updatetime=1000                   " Set to 1000 to avoid plugin glitches
 set cursorline                        " Highlight current line
 set backspace=indent,eol,start        " Backspace behavior
 set hidden                            " Allow background buffers
@@ -17,27 +17,38 @@ set nojoinspaces                      " Do not join spaces
 set nostartofline                     " Do not reset to start of line
 set nowrap                            " Do not wrap lines
 set number                            " Show line numbers
+set numberwidth=5                     " Change gutter width
 set relativenumber                    " Use relative numbers
+set scrolloff=5                       " Keep rows above and below the cursor
+set sidescrolloff=5                   " Keep columns to the right of the cursor
+set sidescroll=5                      " Scroll when cursor moves off screen
 set ruler                             " Show current position
 set showcmd                           " Show command on bottom
 set showmatch                         " Highlight matching braces
 set showmode                          " Show current mode
 set ttyfast                           " Fast terminal
 set wildmenu                          " Use visual autocomplete
+set wildmode=longest,list,full        " Autocomplete options
 set timeoutlen=1000 ttimeoutlen=0     " Remove Esc key deley
-set clipboard=unnamed                 " Use system clipboard (Mac OS)
+set clipboard=unnamedplus             " Use system clipboard
 autocmd BufWritePre * :%s/\s\+$//e    " Remove trailing spaces on write
+set splitbelow                        " Open split panes at the bottom
+set splitright                        " Open split panes to the right
+set diffopt+=vertical                 " Use vertial split for diffs
+let g:netrw_liststyle=3               " Change netrw preferred view type
+let g:netrw_banner=0                  " Remove netrw banner
+let g:netrw_browse_split=4            " Open files in previous window
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Errors
+" Errors                                                                       "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set noerrorbells                      " Disable error bell
-set novisualbell                      " Disable visual bell
+set noerrorbells                      " Disable error bells
+set visualbell                        " Enable visual bell to remove audio bell
 set t_vb=                             " Remove visual bell
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Backups
+" Backups                                                                      "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set nobackup                          " Disable backups
@@ -45,7 +56,7 @@ set nowritebackup                     " Disable write backup"
 set noswapfile                        " Disable swap file"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Encoding
+" Encoding                                                                     "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set encoding=utf-8                    " Default encoding
@@ -54,30 +65,7 @@ set ffs=unix,dos,mac                  " Use UNIX file type
 set eol                               " Add newline at the end of files
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Theme
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Download colorschemes
-if !isdirectory(glob("~/.vim/colors"))
-  :silent execute '!git clone https://github.com/flazz/vim-colorschemes.git ~/.vim/tmp-colors'
-  :silent execute '!mv ~/.vim/tmp-colors/colors ~/.vim/colors'
-  :silent execute '!rm -rf ~/.vim/tmp-colors'
-endif
-
-" Set colorscheme
-set t_Co=256                          " Use 256 colors
-set background=dark                   " Dark background
-highlight Normal ctermbg=none         " Remove terminal background for normal text
-highlight NonText ctermbg=none        " Remove terminal background for empty text
-colorscheme smyck
-syntax on                             " Syntax processing
-
-" Remove terminal background
-autocmd VimEnter * highlight Normal ctermbg=none
-autocmd VimEnter * highlight NonText ctermbg=none
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Indentation
+" Indentation                                                                  "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set autoindent                        " Automatic indentation
@@ -87,11 +75,13 @@ set smarttab                          " Smart tabs
 set softtabstop=2                     " Number of spaces per TAB when editing
 set tabstop=2                         " Spaces used to display TAB
 
-" Length for git commits
-autocmd Filetype gitcommit setlocal spell textwidth=72
+if has("autocmd")
+  autocmd FileType make set noexpandtab
+  autocmd Filetype gitcommit setlocal spell textwidth=72
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Search
+" Search                                                                       "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set hlsearch                          " Highlight matches
@@ -102,7 +92,7 @@ set smartcase                         " Use smart casing
 set wrapscan                          " Wrap around
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Key bindings
+" Key bindings                                                                 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Use ctrl to move between splits
@@ -122,56 +112,3 @@ inoremap <Left> <NOP>
 inoremap <Right> <NOP>
 inoremap <Up> <NOP>
 inoremap <Down> <NOP>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Load files
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Load bundles
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
-endif
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vim Airline
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_theme='powerlineish'
-let g:airline_powerline_fonts = 1
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Neocomplete
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-set completeopt-=preview
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-" Tab completion
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vim Go
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_fmt_command = "goimports"
-let g:go_fmt_autosave = 1
-let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vim LaTeX
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-let Tex_FoldedSections=""
-let Tex_FoldedEnvironments=""
-let Tex_FoldedMisc=""
