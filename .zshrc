@@ -11,6 +11,12 @@ if [[ ! -d "${ZSH_CACHE_DIR}" ]]; then
   mkdir -p "${ZSH_CACHE_DIR}"
 fi
 
+# Fallback to using keychain as the ssh agent
+if [[ -z "${SSH_AUTH_SOCK}" ]] && command -v keychain > /dev/null 2>&1; then
+  keychain --nogui --quick --quiet "${HOME}/.ssh/id_ed25519"
+  source "${HOME}/.keychain/$(hostname)-sh"
+fi
+
 # General
 unsetopt correct_all
 setopt correct

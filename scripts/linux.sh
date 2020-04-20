@@ -29,6 +29,7 @@ sudo DEBIAN_FRONTEND=noninteractive apt install -y \
   gnupg-agent \
   htop \
   imagemagick \
+  keychain \
   libssl-dev \
   make \
   neovim \
