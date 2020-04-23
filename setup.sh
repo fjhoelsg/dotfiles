@@ -31,7 +31,7 @@ cp_dots .zshenv "${HOME}"
 cp_dots .zshrc "${HOME}"
 
 # Run OS-specific scripts
-readonly os="$(uname -s)"
+readonly os="$(uname)"
 if [ "${os}" = "Linux" ] && [ -f /etc/debian_version ]; then
   sh "scripts/linux.sh"
 elif [ "${os}" = "Darwin" ]; then
