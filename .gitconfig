@@ -1,7 +1,7 @@
 [alias]
 	st = status -s
 	lg = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(blue)(%an <%ae>)%Creset' --abbrev-commit --date=relative
-  ls = ls-files
+	ls = ls-files
 	tags = tag -l
 	branches = branch -a
 	remotes = remote -v
