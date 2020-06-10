@@ -1,15 +1,5 @@
 #!/bin/sh
 
-# Prepend options to resolv.conf
-if [ -f "/etc/resolv.conf" ]; then
-  echo "options timeout:1 rotate" > /tmp/resolv.conf
-  cat /etc/resolv.conf >> /tmp/resolv.conf
-  sudo chown --reference=/etc/resolv.conf /tmp/resolv.conf
-  sudo chmod --reference=/etc/resolv.conf /tmp/resolv.conf
-  sudo rm -f /etc/resolv.conf
-  sudo mv /tmp/resolv.conf /etc/resolv.conf 
-fi
-
 # Enable universe repository
 sudo DEBIAN_FRONTEND=noninteractive apt update
 sudo DEBIAN_FRONTEND=noninteractive apt install -y apt-transport-https software-properties-common
