@@ -20,7 +20,6 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 2                         
 # Security
 sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on                # Enable Firewall
 sudo spctl --master-enable                                                              # Enable Gatekeeper
-sudo fdesetup enable 2> /dev/null || true                                               # Enable FileVault
 defaults write com.apple.screensaver askForPassword -int 1                              # Require password when screensaver is active
 defaults write com.apple.screensaver askForPasswordDelay -int 0                         # Disable delay for password when screensaver is active
 
@@ -39,8 +38,8 @@ defaults write com.apple.finder ShowMountedServersOnDesktop -bool true          
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true                  # Show icons for removable media on desktop
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true                # Do not create .DS_Store files in usb drives
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true            # Do not create .DS_Store files in network drives
-defaults write com.apple.finder NewWindowTarget -string "PfLo"                          # Set home as default location for new Finder windows 
-defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"            # Set home as default location for new Finder windows 
+defaults write com.apple.finder NewWindowTarget -string "PfLo"                          # Set home as default location for new Finder windows
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"            # Set home as default location for new Finder windows
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"                     # Use list view in all Finder windows by default
 defaults write com.apple.finder WarnOnEmptyTrash -bool false                            # Disable the warning when emptying trash
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true                  # Enable AirDrop over ethernet
