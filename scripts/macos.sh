@@ -104,6 +104,11 @@ brew install wget
 brew install zsh
 brew cleanup
 
+# Fix zsh folder permissions for compinit
+sudo mkdir -p /usr/local/share/zsh
+sudo chmod -R 755 /usr/local/share/zsh
+sudo chown -R root:staff /usr/local/share/zsh
+
 # Replace default shell with dash
 ln -sf "$(which dash)" /usr/local/bin/sh
 
