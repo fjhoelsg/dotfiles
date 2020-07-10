@@ -114,12 +114,14 @@ zstyle ':vcs_info:git*' formats " [%b]"
 # Kubectl
 # Lazy load kubectl completions
 # See https://github.com/kubernetes/kubernetes/issues/59078
-function kubectl() {
-  if ! type __start_kubectl >/dev/null 2>&1; then
-    source <(command kubectl completion zsh)
-  fi
-  command kubectl "$@"
-}
+if command -v kubectl > /dev/null 2>&1; then
+  function kubectl() {
+    if ! type __start_kubectl >/dev/null 2>&1; then
+      source <(command kubectl completion zsh)
+    fi
+    command kubectl "$@"
+  }
+fi
 
 # Prompt
 precmd() {
