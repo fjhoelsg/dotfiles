@@ -2,7 +2,7 @@
 
 # Start tmux session
 if [[ -z "${TMUX}" ]] && (($+commands[tmux])); then
-  exec tmux
+  exec tmux -u
 fi
 
 # Create zsh cache directory
