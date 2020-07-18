@@ -102,6 +102,7 @@ brew install tree
 brew install watch
 brew install wget
 brew install zsh
+brew cask install homebrew/cask-fonts/font-jetbrains-mono
 brew cleanup
 
 # Fix zsh folder permissions for compinit
