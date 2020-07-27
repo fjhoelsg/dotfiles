@@ -14,8 +14,7 @@ clone_github_repo() {
     mkdir -p "${HOME}/Development/github.com/$(dirname $1)"
     git clone "https://github.com/${1}.git" "${HOME}/Development/github.com/${1}"
     pushd "${HOME}/Development/github.com/${1}" > /dev/null
-    git remote rm origin
-    git remote add origin "git@github.com:${1}.git"
+    git remote set-url origin "git@github.com:${1}.git"
     popd > /dev/null
   fi
 }
