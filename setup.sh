@@ -58,3 +58,11 @@ chsh -s "$(which zsh)"
 
 # Install nvim plugins
 nvim +VimEnter +PlugInstall +qall
+
+# Clone public repositories
+mkdir -p "${HOME}/Development/github.com/fjhoelsg"
+git clone https://github.com/fjhoelsg/dotfiles.git "${HOME}/Development/github.com/fjhoelsg/dotfiles"
+pushd "${HOME}/Development/github.com/fjhoelsg/dotfiles" > /dev/null
+git remote rm origin
+git remote add origin git@github.com:fjhoelsg/dotfiles.git
+popd > /dev/null
