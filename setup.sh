@@ -9,6 +9,17 @@ cp_dots() {
   chown -R "${USER}:$(id -ng)" "${target_path}"
 }
 
+clone_github_repo() {
+  if [ ! -d "${HOME}/Development/github.com/$1" ]; then
+    mkdir -p "${HOME}/Development/github.com/$(dirname $1)"
+    git clone "https://github.com/${1}.git" "${HOME}/Development/github.com/${1}"
+    pushd "${HOME}/Development/github.com/${1}" > /dev/null
+    git remote rm origin
+    git remote add origin "git@github.com:${1}.git"
+    popd > /dev/null
+  fi
+}
+
 # Check not running as root
 if [ "${UID}" = "0" ]; then
   echo "Do not run this script as root" >&2
@@ -60,9 +71,4 @@ chsh -s "$(which zsh)"
 nvim +VimEnter +PlugInstall +qall
 
 # Clone public repositories
-mkdir -p "${HOME}/Development/github.com/fjhoelsg"
-git clone https://github.com/fjhoelsg/dotfiles.git "${HOME}/Development/github.com/fjhoelsg/dotfiles"
-pushd "${HOME}/Development/github.com/fjhoelsg/dotfiles" > /dev/null
-git remote rm origin
-git remote add origin git@github.com:fjhoelsg/dotfiles.git
-popd > /dev/null
+clone_github_repo fjhoelsg/dotfiles
