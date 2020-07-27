@@ -50,11 +50,8 @@ colors:
     white:   '#ffffff'
 background_opacity: 1.0
 key_bindings:
-  - { key: Equals,   mods: Control,       action: IncreaseFontSize             }
-  - { key: Equals,   mods: Command,       action: IncreaseFontSize             }
-  - { key: Minus,    mods: Control,       action: DecreaseFontSize             }
-  - { key: Minus,    mods: Command,       action: DecreaseFontSize             }
-  - { key: Minus,    mods: Control|Shift, action: ResetFontSize                }
-  - { key: Minus,    mods: Command|Shift, action: ResetFontSize                }
+  - { key: Equals,    mods: Control,      action: IncreaseFontSize }
+  - { key: Minus,     mods: Control,      action: DecreaseFontSize }
+  - { key: Key0,      mods: Control,      action: ResetFontSize    }
 live_config_reload: true
 
