@@ -17,15 +17,15 @@ scrolling:
   multiplier: 5
 font:
   normal:
-    family: Fira Mono
+    family: JetBrains Mono NL
     style: Regular
   bold:
-    family: Fira Mono
+    family: JetBrains Mono NL
     style: Bold
   italic:
-    family: Fira Mono
+    family: JetBrains Mono NL
     style: Italic
-  size: 12.0
+  size: 14.0
 colors:
   primary:
     background: '#000000'
