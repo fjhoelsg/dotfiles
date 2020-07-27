@@ -10,6 +10,8 @@ window:
   dynamic_padding: false
   decorations: full
   startup_mode: Windowed
+mouse:
+  hide_when_typing: true
 scrolling:
   history: 0
   multiplier: 5
