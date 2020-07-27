@@ -130,6 +130,7 @@ precmd() {
 
 zle_highlight=(default:fg=231)
 
+PROMPT=''
 function zle-line-init zle-keymap-select {
   PROMPT_SYMBOL="${${KEYMAP/vicmd/❮}/(main|viins)/❯}"
   GIT_COLOR=47
