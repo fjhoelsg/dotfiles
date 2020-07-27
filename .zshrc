@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+# Ignore configuration options in non-interactive sessions
+[[ $- != *i* ]] && return
+
 # Start tmux session
 if [[ -z "${TMUX}" ]] && (($+commands[tmux])); then
   exec tmux -u
