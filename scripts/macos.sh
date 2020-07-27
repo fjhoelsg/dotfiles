@@ -95,7 +95,6 @@ brew install npm
 brew install openssh
 brew install openjdk@11
 brew install python
-brew install reattach-to-user-namespace
 brew install ssh-copy-id
 brew install tmux
 brew install tree
