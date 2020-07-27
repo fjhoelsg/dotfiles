@@ -18,7 +18,7 @@ let $nvimDir = expand($HOME.'/.config/nvim')
 let $autoloadPlug = $nvimDir.'/autoload/plug.vim'
 
 if ! filereadable($autoloadPlug)
-	echo "Downloading junegunn/vim-plug..."
+  echo "Downloading junegunn/vim-plug..."
   silent !curl -SsfLo $autoloadPlug --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync

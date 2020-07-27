@@ -62,7 +62,7 @@ defaults write com.apple.dock mru-spaces -bool false                            
 
 # Kill affected applications
 for app in "cfprefsd" "Dock" "Finder" "SystemUIServer"; do
-	killall "${app}" &> /dev/null
+  killall "${app}" &> /dev/null
 done
 
 # Install Xcode tools
