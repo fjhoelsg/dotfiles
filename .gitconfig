@@ -16,6 +16,7 @@
 	ui = auto
 [commit]
 	gpgsign = false
+	verbose = true
 [core]
 	attributesfile = ~/.gitattributes
 	autocrlf = input
