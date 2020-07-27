@@ -58,8 +58,3 @@ chsh -s "$(which zsh)"
 
 # Install nvim plugins
 nvim +VimEnter +PlugInstall +qall
-
-# Tmux Plugin Manager
-mkdir -p "${HOME}/.local/share/tmux/plugins"
-git clone https://github.com/tmux-plugins/tpm "${HOME}/.local/share/tmux/plugins/tpm"
-exec "${HOME}/.local/share/tmux/plugins/tpm/bin/install_plugins"
