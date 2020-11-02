@@ -35,7 +35,7 @@ alias ic='ibmcloud'
 unalias ln &> /dev/null
 alias ln='ln -v'
 unalias ls &> /dev/null
-alias ls='ls -F --group-directories-first --color=always'
+alias ls='ls -F --group-directories-first --color=always --human-readable'
 unalias ll &> /dev/null
 alias ll='ls -al'
 unalias pip &> /dev/null
