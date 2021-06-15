@@ -1,7 +1,9 @@
 #!/usr/bin/env zsh
 
-# Start tmux session
-if [[ -z "${TMUX}" ]] && (($+commands[tmux])); then
+## Start tmux session
+if [[ -z "${TMUX}" ]] &&
+  (($+commands[tmux])) &&
+  [[ "${TERMINAL_EMULATOR}" != "JetBrains-JediTerm" ]]; then
   exec tmux
 fi
 
