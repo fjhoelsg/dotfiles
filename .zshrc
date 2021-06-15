@@ -1,53 +1,37 @@
 #!/usr/bin/env zsh
 
-# Ignore configuration options in non-interactive sessions
-[[ $- != *i* ]] && return
-
 # Start tmux session
 if [[ -z "${TMUX}" ]] && (($+commands[tmux])); then
-  exec tmux -u
-fi
-
-# Create zsh cache directory
-export ZSH_CACHE_DIR="${HOME}/.cache/zsh"
-if [[ ! -d "${ZSH_CACHE_DIR}" ]]; then
-  mkdir -p "${ZSH_CACHE_DIR}"
-fi
-
-# Fallback to using keychain as the ssh agent
-if [[ -z "${SSH_AUTH_SOCK}" ]] && command -v keychain > /dev/null 2>&1; then
-  keychain --nogui --quick --quiet "${HOME}/.ssh/id_ed25519"
-  source "${HOME}/.keychain/$(hostname)-sh"
+  exec tmux
 fi
 
 # General
-unsetopt correct_all
-setopt correct
-setopt combining_chars
-setopt interactive_comments
-setopt rc_quotes
-setopt long_list_jobs
-setopt auto_resume
-setopt notify
-setopt bg_nice
-setopt hup
-setopt check_jobs
-setopt rcexpandparam
-setopt nocheckjobs
-setopt numericglobsort
-setopt nobeep
-setopt autocd
+setopt AUTOCD
+unsetopt BEEP
+setopt BG_NICE
+setopt CHECK_JOBS
+setopt CHECK_RUNNING_JOBS
+setopt COMBINING_CHARS
+unsetopt CORRECT_ALL
+setopt CORRECT
+setopt HUP
+setopt INTERACTIVE_COMMENTS
+setopt LONG_LIST_JOBS
+setopt NOTIFY
+setopt NUMERIC_GLOB_SORT
+setopt RC_EXPAND_PARAM
 zmodload zsh/terminfo
 
 # History
-export HISTFILE="${ZSH_CACHE_DIR}/history"
+export HISTFILE="${HOME}/.zhistory"
 export HISTSIZE=1000
 export SAVEHIST=$HISTSIZE
-setopt append_history
-setopt inc_append_history
-setopt share_history
-setopt hist_ignore_all_dups
-setopt hist_ignore_space
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
+setopt HIST_SAVE_NO_DUPS
+setopt INC_APPEND_HISTORY
 # Up and down arrow search
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
@@ -56,24 +40,23 @@ zle -N down-line-or-beginning-search
 [[ -n "$key[Down]" ]] && bindkey -- "$key[Down]" down-line-or-beginning-search
 
 # Completions
-setopt complete_in_word
-setopt always_to_end
-setopt path_dirs
-setopt auto_menu
-setopt auto_list
-setopt auto_param_slash
-setopt extended_glob
-setopt no_case_glob
-unsetopt menu_complete
-unsetopt flow_control
-zstyle ':completion:::::' completer _complete _approximate
+setopt ALWAYS_TO_END
+setopt AUTO_LIST
+setopt AUTO_MENU
+setopt AUTO_PARAM_SLASH
+unsetopt CASE_GLOB
+setopt COMPLETE_IN_WORD
+setopt EXTENDED_GLOB
+unsetopt FLOW_CONTROL
+setopt PATH_DIRS
+zstyle ':completion:*' completer _oldlist _expand _complete _match _ignored _approximate
 zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) )'
 zstyle ':completion:*:default' list-prompt '%S%M matches%s'
 zstyle ':completion:*:manuals' separate-sections true
 zstyle ':completion:*:manuals.*(^1)' insert-sections true
 zstyle ':completion:approximate*:*' prefix-needed false
 zstyle ':completion:*' accept-exact-dirs true
-zstyle ':completion:*' menu select
+zstyle ':completion:*' menu select=2
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*' rehash true
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
@@ -103,7 +86,10 @@ bindkey -M viins "^e" edit-command-line
 
 # Autoload
 autoload -Uz compinit colors zcalc
-compinit -d "${ZSH_CACHE_DIR}/zcompdump-${ZSH_VERSION}"
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
 colors
 
 # Prompt
