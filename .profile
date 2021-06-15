@@ -79,11 +79,3 @@ if command -v dotnet > /dev/null 2>&1; then
   export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
   export DOTNET_CLI_TELEMETRY_OPTOUT=true
 fi
-
-# CUDA
-if command -v nvcc > /dev/null 2>&1; then
-  export CUDA_PATH=$(which nvcc | sed -e 's#/bin/nvcc$##')
-elif [ -d "/opt/cuda" ]; then
-  export CUDA_PATH='/opt/cuda'
-  export PATH="${CUDA_PATH}/bin:${PATH}"
-fi
