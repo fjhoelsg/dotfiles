@@ -42,7 +42,7 @@ set diffopt+=vertical                 " Use vertial split for diffs
 
 let g:netrw_banner=0                  " Remove banner
 let g:netrw_liststyle=3               " Change preferred view type
-let g:netrw_browse_split=4            " Open files in previous window
+let g:netrw_browse_split=2            " Open files in vertical split
 let g:netrw_altv = 1                  " Open files to the right
 let g:netrw_winsize=20                " Windows size
 
@@ -52,62 +52,6 @@ augroup netrw_mappings
   autocmd!
   autocmd filetype netrw noremap <buffer> <C-l> <C-w>l
 augroup END
-
-" Toggle
-let g:NetrwIsOpen=0
-function! ToggleNetrw()
-    if g:NetrwIsOpen
-        let i = bufnr("$")
-        while (i >= 1)
-            if (getbufvar(i, "&filetype") == "netrw")
-                silent exe "bwipeout " . i
-            endif
-            let i-=1
-        endwhile
-        let g:NetrwIsOpen=0
-    else
-        let g:NetrwIsOpen=1
-        silent Lexplore
-        wincmd l
-    endif
-endfunction
-
-" Close Netrw if it's the only buffer open
-function! WindowEnterHandler()
-  if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&filetype") == "netrw" || &buftype == 'quickfix'
-    :exit
-  endif
-endfun
-autocmd WinEnter * :call WindowEnterHandler()
-
-" Open on launch
-function! NetrwOnBufferOpen()
-  " Do not open if already open
-  if exists('b:noNetrw')
-    return
-  endif
-  " When opening a directory
-  if winnr('$') == 1 && getbufvar(winbufnr(1), "&filetype") == ''
-    " Change working directory
-    :cd %:p:h
-    call ToggleNetrw()
-    " Replace additional netwr pane with empty buffer
-    :new
-    wincmd k
-    :exit
-    wincmd h
-  endif
-endfun
-
-" Project drawer configuration
-augroup ProjectDrawer
-  autocmd!
-  " Do not launch Netrw for certain files
-  autocmd VimEnter */.git/COMMIT_EDITMSG let b:noNetrw=1
-  " Auto launch Netrw
-  autocmd VimEnter * :call NetrwOnBufferOpen()
-augroup END
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Errors                                                                       "
